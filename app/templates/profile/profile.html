@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <!-- displaying  Username-->
+    <div class="col-md-4">
+      <p class="userr"> {{user.username| capitalize}} </p>
+
+      <!--Displaying user bio-->
+      {% if user.bio %}
+      <p class="bio"> {{user.bio}}</p>
+      {%else%}
+      <p class="bio" > {{user.username| capitalize}} has no bio </p>
+      {% endif %}
+    </div>
+
+    <!--Display profile photo-->
+        <div class="col-md-4 profile">
+
+            {% if user.profile_pic_path %}
+            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+            {%else%}
+            <p>No profile picture</p>
+            {% endif %}
+            {% if user == current_user %}
+            <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+
+              <input type="file"  name="photo" class="form-control" required>
+              <input type="submit">
+            </form>
+            <br>
+            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit your profile</a>
+            {% endif %}
+          </div>
+  </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+    .userr{
+      font-size: 25px;
+      font-family: 'Nunito Sans', sans-serif !important;
+      color: black;
+    }
+
+    .bio{
+      font-size: 16.5px;
+      font-family: 'Nunito Sans', sans-serif !important;
+    }
+    .profile{
+      font-family: 'Nunito Sans', sans-serif !important;
+    }
+  </style>
+
+
+{% endblock %}
