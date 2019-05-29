@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content%}
+<body>
+    <div class="container">
+      <br>
+      <br>
+      <br>
+        <div class="well">
+                <p class="new">Write a new pitch...</p>
+                <br>
+                <div class="form">
+                    {{wtf.quick_form(new_pitch_form)}}
+                </div>
+
+        </div>
+</div>
+</body>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+    body{
+    background: url(/static/photos/pitch.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    .new{
+      font-size: 26px;
+      font-family: 'Nunito Sans', sans-serif !important;
+      color: red;
+    }
+
+    .form{
+      font-size: 16.5px;
+      font-family: 'Nunito Sans', sans-serif !important;
+      color: red !important;
+    }
+  </style>
+
+{% endblock %}
