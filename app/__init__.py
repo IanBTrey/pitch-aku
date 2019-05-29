@@ -29,3 +29,4 @@ def create_app(config_name):
 
 
     # Configure UploadSet
+    configure_uploads(app,photos)
